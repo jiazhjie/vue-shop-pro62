@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
 import Welcome from '@/components/Welcome'
+import User from '@/components/User'
 
 Vue.use(Router)
 
@@ -15,8 +16,15 @@ var router = new Router({
     //   component: HelloWorld
     // },
     { path: '/login', component: Login },
-    { path: '/home', component: Home,redirect:'/welcome',children:
-    [{path: '/welcome', component: Welcome}]}
+    {
+      path: '/home',
+      component: Home,
+      redirect: '/welcome',
+      children: [
+        { path: '/welcome', component: Welcome },
+        { path: '/users', component: User }
+      ]
+    }
   ]
 })
 // 路由导航守卫 只有登录用户才能访问路由后台
